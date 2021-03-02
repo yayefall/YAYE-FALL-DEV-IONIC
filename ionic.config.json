@@ -1,0 +1,7 @@
+{
+  "name": "YAYE-FALL-DEV-IONIC",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
