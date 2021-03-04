@@ -1,0 +1,51 @@
+
+
+
+<ion-app>
+
+
+  <ion-menu side="start" content-id="main-content">
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon color="secondary" name="home-outline" slot="start"></ion-icon>
+           <ion-label  [routerLink]="['/tabs/tab1']" >Home</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="secondary" name="sync-outline" slot="start"></ion-icon>
+          <ion-label>Transaction</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="secondary" name="contract-outline" slot="start"></ion-icon>
+          <ion-label>Commission</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="secondary" name="calculator-outline" slot="start"></ion-icon>
+          <ion-label>Calculateur</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+    <ion-item>
+    <ion-icon color="secondary" name="exit-outline"></ion-icon>
+      <a [routerLink]="['/login']"><ion-label > DECONNEXION</ion-label></a>
+    </ion-item>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button color="secondary"></ion-menu-button>
+        </ion-buttons>
+        <ion-title >MENU ADMIN</ion-title>
+
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+
+
+    </ion-content>
+  </div>
+
+</ion-app>

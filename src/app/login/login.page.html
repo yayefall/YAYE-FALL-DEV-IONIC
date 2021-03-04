@@ -1,0 +1,80 @@
+
+<ion-header >
+  <ion-toolbar >
+
+      <div id="container">
+        <img src="./assets/images/Logo%20MONEY%20SA%201.png" alt="">
+      </div>
+    <p class="ion-text-center" id="page">Login</p>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+{{loginForm.value | json}}
+  <form [formGroup]="loginForm" >
+    <ion-card-content class="ion-padding">
+      <ion-label color=""><strong>Telephone</strong></ion-label>
+      <ion-item  color="light">
+        <ion-input color="dark"
+                   type="text"
+                   placeholder="Saisir votre username"
+                   name="username"
+                   required
+                   formControlName="username"
+                   [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+        </ion-input>
+        <div *ngIf="submitted && f.username.errors">
+          <div class="errorClasse text-danger " id="dives"
+               *ngIf="f.username.errors.required" >
+            Ce champs est  obligatoire **
+          </div>
+        </div>
+      </ion-item>
+
+
+      <ion-label color=""><strong>Mot de passe</strong></ion-label>
+      <ion-item  color="light">
+        <ion-input color="dark"
+                   type="password"
+                   placeholder="Saisir votre mot de passe"
+                   name="password"
+                   required
+                   formControlName="password">
+        </ion-input>
+        <div *ngIf="submitted && f.password.errors">
+          <div class="errorClasse text-danger " id="dive"
+               *ngIf="f.password.errors.required" >
+            Ce champs est  obligatoire **
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none" color="light">
+        <ion-button color="secondary"
+                    class="ion-offset-lg"
+                    slot="end"
+                    fill="clear">
+                    Mot de passe oublié ?
+        </ion-button>
+      </ion-item>
+
+      <div class="flex">
+        <ion-button color="secondary"
+                    expand="default"
+                    shape="round"
+        (click)="onLogin()">
+          Se Connecter
+        </ion-button>
+
+        <ion-button color="secondary"
+                    [routerLink]="['/home']">
+          <ion-icon  name="arrow-back">
+            Retour
+          </ion-icon>
+        </ion-button>
+      </div>
+
+    </ion-card-content>
+  </form>
+</ion-content>

@@ -1,0 +1,112 @@
+
+
+
+
+
+<ion-app>
+
+
+  <ion-menu side="start" content-id="main-content">
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon color="secondary" name="home-outline" slot="start"></ion-icon>
+           <ion-label [routerLink]="['/tabs/tab1']">Home</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="secondary" name="sync-outline" slot="start"></ion-icon>
+          <ion-label>Transaction</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="secondary" name="contract-outline" slot="start"></ion-icon>
+          <ion-label>Commission</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="secondary" name="calculator-outline" slot="start"></ion-icon>
+          <ion-label>Calculateur</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+    <ion-item>
+      <ion-icon color="secondary" name="exit-outline"></ion-icon>
+      <a [routerLink]="['/login']"><ion-label > DECONNEXION</ion-label></a>
+    </ion-item>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button color="secondary"></ion-menu-button>
+        </ion-buttons>
+
+        <div class="ion-text-center"> <img src="assets/images/Logo%20MONEY%20SA%201.png" alt="" id="Img"></div>
+
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+
+
+
+
+      <ion-content>
+        <ion-card>
+          <div id="container">
+            <p class="ion-text-center">Mon solde Disponible :</p>
+            <ion-card-title class="ion-text-center" color="secondary">150000 fcfa</ion-card-title>
+          </div>
+        </ion-card>
+        <ion-card>
+
+          <ion-item>
+              <ion-icon  color="danger" name="return-down-forward-outline" slot="start"></ion-icon>
+              <ion-label>Depot</ion-label>
+              <ion-icon name="chevron-forward-outline" color="danger" [routerLink]="['/depot']"></ion-icon>
+          </ion-item>
+
+          <ion-item >
+              <ion-icon color="danger" name="return-down-back-outline" slot="start"></ion-icon>
+              <ion-label>Retrait</ion-label>
+              <ion-icon color="danger" name="chevron-forward-outline" [routerLink]="['/depot']"></ion-icon>
+          </ion-item>
+
+          <ion-item >
+            <ion-icon color="danger" name="sync-outline" slot="start"></ion-icon>
+            <ion-label>Mes Transactions</ion-label>
+            <ion-icon color="danger" name="chevron-forward-outline"></ion-icon>
+          </ion-item>
+
+          <ion-item >
+            <ion-icon color="danger" name="sync-circle-outline" slot="start"></ion-icon>
+            <ion-label>Toutes les Transactions</ion-label>
+            <ion-icon color="danger" name="chevron-forward-outline" ></ion-icon>
+          </ion-item>
+
+          <ion-item >
+            <ion-icon color="danger" name="contract-outline" slot="start"></ion-icon>
+            <ion-label>Mes Commissions</ion-label>
+            <ion-icon color="danger" name="chevron-forward-outline"></ion-icon>
+          </ion-item>
+
+          <ion-item >
+            <ion-icon color="danger" name="calculator-outline" slot="start"></ion-icon>
+            <ion-label>Calculateur de frais</ion-label>
+            <ion-icon color="danger" name="chevron-forward-outline"></ion-icon>
+          </ion-item>
+
+          <ion-item >
+            <ion-icon color="danger" name="power-outline" slot="start"></ion-icon>
+            <ion-label>Déconnexion</ion-label>
+            <ion-icon color="danger" name="chevron-forward-outline"></ion-icon>
+          </ion-item>
+
+        </ion-card>
+      </ion-content>
+
+
+    </ion-content>
+  </div>
+
+</ion-app>
+
