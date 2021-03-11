@@ -1,0 +1,50 @@
+
+
+
+<ion-app>
+
+
+  <ion-menu side="start" content-id="main-content">
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-icon color="secondary" name="home-outline" slot="start"></ion-icon>
+          <ion-label  [routerLink]="['/menu-users/user-tab1']" >Home</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon color="secondary" name="sync-outline" slot="start"></ion-icon>
+          <ion-label>Transactions</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-icon color="secondary" name="calculator-outline" slot="start"></ion-icon>
+          <ion-label [routerLink]="['user-tab3']">Calculateur</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </ion-content>
+    <ion-item>
+      <ion-icon color="secondary" name="exit-outline"></ion-icon>
+      <a [routerLink]="['/login']"><ion-label > DECONNEXION</ion-label></a>
+    </ion-item>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button color="secondary"></ion-menu-button>
+        </ion-buttons>
+
+        <div id= "center"> <img src="assets/images/Logo%20MONEY%20SA%201.png" alt="" id="Img"></div>
+
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+
+<app-user-tabs></app-user-tabs>
+
+    </ion-content>
+  </div>
+
+</ion-app>

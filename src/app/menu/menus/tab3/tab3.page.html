@@ -1,9 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>tab3</ion-title>
-  </ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-icon size="large" id="home" color="secondary" name="home" [routerLink]="['/menu']"></ion-icon>
+      </ion-col>
+
+      <ion-col>
+        <img src="assets/images/Logo%20MONEY%20SA%201.png" alt="" id="img">
+      </ion-col>
+    </ion-row>
+    <ion-card>
+      <ion-segment [(ngModel)]="mySegment" >
+        <ion-segment-button value="MesTransaction">
+          <ion-label>Mes Transaction</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="TesTransaction">
+          <ion-label>Toutes mes transactions</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-card>
+  </ion-grid>
 </ion-header>
 
 <ion-content>
+<div *ngIf="mySegment=='MesTransaction'">
 
+</div>
+
+
+  <div *ngIf="mySegment=='TesTransaction'">
+    <p>mes</p>
+  </div>
 </ion-content>

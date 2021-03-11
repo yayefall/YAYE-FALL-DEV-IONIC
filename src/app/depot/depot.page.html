@@ -1,17 +1,138 @@
+
+
 <ion-header>
-  <ion-toolbar>
-    <ion-icon id="page" color="secondary" name="home" slot="start" [routerLink]="['/menu']"></ion-icon>
-   <div > <img src="assets/images/Logo%20MONEY%20SA%201.png" alt="" id="Img" ></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-icon size="large" id="home" color="secondary" name="home" [routerLink]="['/menu']"></ion-icon>
+      </ion-col>
+
+      <ion-col>
+        <img src="assets/images/Logo%20MONEY%20SA%201.png" alt="" id="img">
+      </ion-col>
+    </ion-row>
+    <ion-icon  color="secondary" name="return-down-forward" slot="start"></ion-icon>
     <p id="depot">Dépôt</p>
-  </ion-toolbar>
+  </ion-grid>
 </ion-header>
 
 <ion-content>
+<ion-card>
+  <ion-segment [(ngModel)]="mySegment" >
+    <ion-segment-button value="Emetteur">
+      <ion-label>Emetteur</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Recepteur">
+      <ion-label>Recepteur</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-card>
+
+  <form [formGroup]="depot"  (ngSubmit)="onSubmit()">
+
+<div *ngIf="mySegment=='Emetteur'">
+
   <ion-card>
-    <div id="container">
-      <p>Ememetteur :</p> </div>
-     <div id="depots"> <p >Recepteur</p> </div>
 
+    <ion-card-content>
 
+      <ion-label color="dark"> CNI Emetteur</ion-label>
+        <ion-item>
+          <ion-input
+                     placeholder="1 223 2001 75023"
+                     name="CNIClient"
+                     formControlName="CNIClient"
+                      required></ion-input>
+        </ion-item>
+
+      <ion-label color="dark"> Prénom & Nom </ion-label>
+      <ion-item>
+        <ion-input type="text"
+                   placeholder="karim sidev"
+                   name="nomClient"
+                   formControlName="nomClient"></ion-input>
+      </ion-item>
+
+      <ion-label color="dark"> Telephone </ion-label>
+      <ion-item>
+        <ion-input
+                   placeholder="78 123 56 89"
+                   name="telephoneClient"
+                   formControlName="telephoneClient"></ion-input>
+      </ion-item>
+
+      <ion-label color="dark"> Montant</ion-label>
+      <ion-item>
+        <ion-input type="number"
+                   placeholder="1 000 000 FCFA"
+                   name="montant"
+                   formControlName="montant"
+               #element (ionChange)="getFrais(element.value)"></ion-input>
+      </ion-item>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label color="dark"> Frais</ion-label>
+              <ion-item>
+                <ion-input type="number"
+                           placeholder="25000 FCFA"
+                           name="frais"
+                           readonly
+                           value="{{frais}}"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col>
+              <ion-label color="dark" > Montant Total</ion-label>
+              <ion-item>
+                <ion-input type="number"
+                           placeholder="1 025 000 FCFA"
+                           name="total"
+                           readonly
+                           value="{{total}}"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+    </ion-card-content>
   </ion-card>
+</div>
+
+
+
+
+  <div *ngIf="mySegment=='Recepteur'">
+    <ion-card>
+      <ion-card-content>
+        <ion-label color="dark" > Prénom & Nom</ion-label>
+        <ion-item>
+          <ion-input type="text"
+                     placeholder="Lamp  Fall"
+                     name="nomBeneficiaire"
+                     formControlName="nomBeneficiaire"></ion-input>
+        </ion-item>
+
+        <ion-label color="dark"> Telephone </ion-label>
+        <ion-item>
+          <ion-input
+                     placeholder="78-245-63-20"
+                     name="telephoneBeneficiaire"
+                     formControlName="telephoneBeneficiaire"></ion-input>
+        </ion-item>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+<div>
+  <ion-button  color="secondary"
+               expand="block"
+               shape="round" (click)="onSubmit()">
+    Suivant
+  </ion-button>
+</div>
+  </form>
 </ion-content>
+

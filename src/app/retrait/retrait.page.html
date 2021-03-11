@@ -1,0 +1,130 @@
+
+<ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-icon size="large" id="home" color="secondary" name="home" [routerLink]="['/menu']"></ion-icon>
+      </ion-col>
+
+      <ion-col>
+        <img src="assets/images/Logo%20MONEY%20SA%201.png" alt="" id="img">
+      </ion-col>
+    </ion-row>
+    <p id="depot">Retrait</p>
+  </ion-grid>
+</ion-header>
+
+<ion-card-content color="light">
+  <ion-label>Code Retrait</ion-label>
+  <ion-item>
+  <ion-input type="number"  placeholder="213-365-456"  (focusout)="getRetrait()"></ion-input>
+  </ion-item>
+</ion-card-content>
+
+
+<ion-content *ngIf="retrait">
+  <ion-card>
+    <ion-segment [(ngModel)]="mySegment" >
+      <ion-segment-button value="Beneficiaire">
+        <ion-label>Beneficiaire</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Emetteur">
+        <ion-label>Emetteur</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-card>
+
+
+
+  <div *ngIf="mySegment=='Beneficiaire'">
+      <ion-card color="light">
+
+        <ion-card>
+          <ion-label color="dark">Num CNI Bénéficiaire</ion-label>
+          <ion-item>
+            <ion-input type="number"  placeholder="2 238 2001 75416" ></ion-input>
+          </ion-item>
+        </ion-card>
+
+      <ion-card>
+        <ion-label> Prénom & Nom</ion-label>
+        <ion-item>
+          <p>lamp Fall</p>
+        </ion-item>
+      </ion-card>
+
+        <ion-card>
+          <ion-label> Téléphone </ion-label>
+          <ion-item>
+            <p>78-125-63-98</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label> Montant à recevoir</ion-label>
+          <ion-item>
+            <p> 1 000 000 FCFA</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label> Date D'envoi</ion-label>
+          <ion-item>
+            <p> 25 02 2021</p>
+          </ion-item>
+        </ion-card>
+
+      </ion-card>
+
+  </div>
+
+
+
+
+  <div *ngIf="mySegment=='Emetteur'">
+    <ion-card>
+      <ion-card>
+        <ion-label color="dark">Num CNI Emetteur</ion-label>
+        <ion-item>
+          <p >1 203 2006 40056</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-label> Prénom & Nom</ion-label>
+        <ion-item>
+          <p>Rassoul mbodji</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-label > Téléphone </ion-label>
+        <ion-item>
+          <p>78-245-63-20</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-label> Montant à envoyé</ion-label>
+        <ion-item>
+          <p> 1 000 000 FCFA</p>
+        </ion-item>
+      </ion-card>
+
+      <ion-card>
+        <ion-label> Date D'envoi</ion-label>
+        <ion-item>
+          <p> 25 02 2021</p>
+        </ion-item>
+      </ion-card>
+    </ion-card>
+  </div>
+
+  <div>
+    <ion-button  color="secondary" expand="block" shape="round">
+      Retirer
+    </ion-button>
+  </div>
+
+</ion-content>
+

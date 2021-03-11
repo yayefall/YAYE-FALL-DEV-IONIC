@@ -4,6 +4,7 @@ import {Users} from '../Modeles/user';
 import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from '../Services/login.service';
 import {first} from 'rxjs/operators';
+import * as $ from 'jquery';
 
 // @ts-ignore
 @Component({
@@ -28,6 +29,26 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
 
+
+    // tslint:disable-next-line:only-arrow-functions
+    $(document).ready(function() {
+      // tslint:disable-next-line:only-arrow-functions
+      $('#show-password ion-icon').on('click', function(event){
+        event.preventDefault();
+        // tslint:disable-next-line:triple-equals
+        if ($ ('#show-password ion-input').attr('type') == 'text'){
+          $('#show-password ion-input').attr('type', 'password');
+          $('#show-password ion-icon').attr('name', 'eye-off');
+        }
+        // tslint:disable-next-line:triple-equals
+        else if ($ ('#show-password ion-input').attr('type') == 'password'){
+          $('#show-password ion-input').attr('type', 'text');
+          $('#show-password ion-icon').attr('name', 'eye');
+        }
+      });
+    });
+
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -46,17 +67,15 @@ export class LoginPage implements OnInit {
         data => {
           const decodedToken = this.loginService.getMyToken();
           // console.log(decodedToken);
-          if (decodedToken.roles[0] === 'ROLE_AdminAgence'){
+          if (decodedToken.roles[0] === 'ROLE_AdminAgence' || decodedToken.roles[0] === 'ROLE_UserAgence'){
             this.router.navigate(['/menu']);
-          }else if (decodedToken.roles[0] === 'ROLE_UserAgence') {
-            this.router.navigate(['/menu']);
-          }else if (decodedToken.roles[0] === 'ROLE_Caissier') {
-            this.router.navigate(['/depot']);
+
           }
 
           console.log(this.loginService.getMyToken());
         });
    }
+
 
 
 

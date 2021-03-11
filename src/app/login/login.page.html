@@ -11,8 +11,9 @@
 </ion-header>
 
 <ion-content color="light">
-{{loginForm.value | json}}
+  <!--{{loginForm.value | json}}-->
   <form [formGroup]="loginForm" >
+    <ion-card>
     <ion-card-content class="ion-padding">
       <ion-label color=""><strong>Telephone</strong></ion-label>
       <ion-item  color="light">
@@ -32,7 +33,7 @@
         </div>
       </ion-item>
 
-
+     <div id="show-password">
       <ion-label color=""><strong>Mot de passe</strong></ion-label>
       <ion-item  color="light">
         <ion-input color="dark"
@@ -42,13 +43,14 @@
                    required
                    formControlName="password">
         </ion-input>
+        <ion-icon size="large" color="secondary" name="eye"  ></ion-icon>
         <div *ngIf="submitted && f.password.errors">
           <div class="errorClasse text-danger " id="dive"
                *ngIf="f.password.errors.required" >
             Ce champs est  obligatoire **
           </div>
         </div>
-      </ion-item>
+      </ion-item></div>
 
       <ion-item lines="none" color="light">
         <ion-button color="secondary"
@@ -66,15 +68,9 @@
         (click)="onLogin()">
           Se Connecter
         </ion-button>
-
-        <ion-button color="secondary"
-                    [routerLink]="['/home']">
-          <ion-icon  name="arrow-back">
-            Retour
-          </ion-icon>
-        </ion-button>
       </div>
 
     </ion-card-content>
+    </ion-card>
   </form>
 </ion-content>
