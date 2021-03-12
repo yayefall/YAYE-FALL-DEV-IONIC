@@ -12,7 +12,6 @@ import {UserTab1Component} from './menu-users/user-tabs/user-tab1/user-tab1.comp
 import {UserTab2Component} from './menu-users/user-tabs/user-tab2/user-tab2.component';
 import {UserTab3Component} from './menu-users/user-tabs/user-tab3/user-tab3.component';
 import {UserTabsComponent} from './menu-users/user-tabs/user-tabs.component';
-import {JWT_OPTIONS, JwtHelperService} from '@auth0/angular-jwt';
 import {JwtInterceptor} from './Helpers/jwt.interceptor';
 import {ErrorInterceptor} from './Helpers/error.interceptor';
 

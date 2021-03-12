@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DepotService} from '../../../Services/depot.service';
 import {FormBuilder, Validators} from '@angular/forms';
+import {AlertController} from '@ionic/angular';
 
 @Component({
   selector: 'app-tab4',
@@ -23,8 +24,10 @@ export class Tab4Page implements OnInit {
   frais: number;
 
   constructor(private depotService: DepotService,
-              private formbuilder: FormBuilder) { }
+              private formbuilder: FormBuilder,
+              private alertController: AlertController) { }
 solde: number;
+
 
   ngOnInit() {
   }
@@ -45,5 +48,19 @@ solde: number;
          }
        }
      }
-    onSubmit(){}
+
+    showFrais(){
+      this.alertController.create({
+        header: 'Calculateur',
+        message: 'Pour une transaction de' + ' ' +
+          this.calcul.value.montant + ' ' + 'le frais est  egale a' + ' ' +
+          this.calcul.value.frais,
+
+        buttons: ['retour']
+      }).then(res => {
+
+        res.present();
+
+      });
+    }
 }

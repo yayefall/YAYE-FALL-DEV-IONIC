@@ -8,7 +8,7 @@
 <ion-content color="light">
   <ion-card>
   <ion-card-content class="ion-padding" >
-    <form [formGroup]="calcul" (ngSubmit)="onSubmit()">
+    <form [formGroup]="calcul" >
     <ion-label color="dark"> Type de transaction</ion-label>
     <ion-item color="light">
       <ion-input type="text"
@@ -31,9 +31,11 @@
                    placeholder="0 FCFA"
                    name="montant"
                    [formControlName]="'frais'"
-        value="{{frais}}">
+        value="{{frais}} FCFA">
         </ion-input>
       </ion-item>
+
+      <ion-button expand="full" fill="outline" (click)="showFrais()">Calculer</ion-button>
     </form>
   </ion-card-content>
   </ion-card>

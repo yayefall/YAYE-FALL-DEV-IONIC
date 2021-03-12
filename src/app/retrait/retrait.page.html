@@ -14,10 +14,15 @@
   </ion-grid>
 </ion-header>
 
+
 <ion-card-content color="light">
   <ion-label>Code Retrait</ion-label>
   <ion-item>
-  <ion-input type="number"  placeholder="213-365-456"  (focusout)="getRetrait()"></ion-input>
+  <ion-input placeholder="213-365-456"
+             name="code"
+             type="text"
+             [(ngModel)]="code"
+              (focusout)="getCode()"></ion-input>
   </ion-item>
 </ion-card-content>
 
@@ -34,7 +39,7 @@
     </ion-segment>
   </ion-card>
 
-
+<form [formGroup]="formRetrait" >
 
   <div *ngIf="mySegment=='Beneficiaire'">
       <ion-card color="light">
@@ -42,42 +47,43 @@
         <ion-card>
           <ion-label color="dark">Num CNI Bénéficiaire</ion-label>
           <ion-item>
-            <ion-input type="number"  placeholder="2 238 2001 75416" ></ion-input>
+            <ion-input name="CNIBeneficiaire"
+                       placeholder="2 238 2001 75416"
+                       formControlName="CNIBeneficiaire"></ion-input>
           </ion-item>
         </ion-card>
 
       <ion-card>
         <ion-label> Prénom & Nom</ion-label>
         <ion-item>
-          <p>lamp Fall</p>
+          <p>{{retire.clients.nomClient}}</p>
         </ion-item>
       </ion-card>
 
         <ion-card>
           <ion-label> Téléphone </ion-label>
           <ion-item>
-            <p>78-125-63-98</p>
+            <p>{{retire.clients.telephoneClient}}</p>
           </ion-item>
         </ion-card>
 
         <ion-card>
           <ion-label> Montant à recevoir</ion-label>
           <ion-item>
-            <p> 1 000 000 FCFA</p>
+            <p> {{retire.montant}} FCFA</p>
           </ion-item>
         </ion-card>
 
         <ion-card>
           <ion-label> Date D'envoi</ion-label>
           <ion-item>
-            <p> 25 02 2021</p>
+            <p>{{retire.dateDepot}}</p>
           </ion-item>
         </ion-card>
 
       </ion-card>
 
   </div>
-
 
 
 
@@ -86,45 +92,47 @@
       <ion-card>
         <ion-label color="dark">Num CNI Emetteur</ion-label>
         <ion-item>
-          <p >1 203 2006 40056</p>
+          <p >{{retire.clients.CNIClient}}</p>
         </ion-item>
       </ion-card>
 
       <ion-card>
         <ion-label> Prénom & Nom</ion-label>
         <ion-item>
-          <p>Rassoul mbodji</p>
+          <p>{{retire.clients.nomBeneficiaire}}</p>
         </ion-item>
       </ion-card>
 
       <ion-card>
         <ion-label > Téléphone </ion-label>
         <ion-item>
-          <p>78-245-63-20</p>
+          <p>{{retire.clients.telephoneBeneficiaire}}</p>
         </ion-item>
       </ion-card>
 
       <ion-card>
         <ion-label> Montant à envoyé</ion-label>
         <ion-item>
-          <p> 1 000 000 FCFA</p>
+          <p>{{retire.montant}} FCFA</p>
         </ion-item>
       </ion-card>
 
       <ion-card>
         <ion-label> Date D'envoi</ion-label>
         <ion-item>
-          <p> 25 02 2021</p>
+          <p> {{retire.dateDepot}}</p>
         </ion-item>
       </ion-card>
     </ion-card>
   </div>
 
   <div>
-    <ion-button  color="secondary" expand="block" shape="round">
+    <ion-button color="secondary" expand="block" shape="round"
+    (click)="doRetrait()">
       Retirer
     </ion-button>
   </div>
-
+</form>
 </ion-content>
+
 

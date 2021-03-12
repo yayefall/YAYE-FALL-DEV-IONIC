@@ -63,34 +63,15 @@ client: Client;
     this.alertController.create({
       header: 'Transfert Reussi',
       cssClass: 'color',
-      message: 'Vous avez envoyé à',
-      inputs: [
-        {
-          name: 'nomBeneficiaire',
-          placeholder: 'Eg.NY',
-          label: 'nomBeneficiaire',
-          value: this.depot.value.nomBeneficiaire
-        },
-        {
-          name: 'montant',
-          placeholder: 'Eg.NY',
-          label: 'montant',
-          value: this.depot.value.montant
-        },
-        {
-          name: 'code',
-          placeholder: 'Eg.NY',
-          label: 'code',
-          value: this.depot.value.code
-        },
-      ],
-
+      message: 'Vous avez envoyé à' + ' ' + this.depot.value.nomBeneficiaire +
+        ' une somme de' + ' ' + this.depot.value.montant + ' '
+        + 'Votre code de transaction est' +  this.depot.value.code,
       buttons: [
         {
-          text: 'retour',
+          text: 'Annuler',
         },
         {
-          text: 'envoyer',
+          text: 'Envoyer',
         }
       ]
     }).then(res => {

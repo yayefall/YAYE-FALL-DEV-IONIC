@@ -18,7 +18,7 @@ roles;
     this.compteService.getSoldeCompte().subscribe(
       (reponse) => {
         this.compte = reponse;
-        console.log( this.compte);
+       // console.log( this.compte);
       });
   }
 
@@ -26,7 +26,7 @@ roles;
 
     this.roles = this.loginService.getMyToken().roles[0];
 
-    console.log( this.roles);
+   // console.log( this.roles);
 
     // tslint:disable-next-line:only-arrow-functions
     $(document).ready(function() {

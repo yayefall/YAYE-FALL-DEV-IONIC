@@ -25,10 +25,43 @@
 <ion-content>
 <div *ngIf="mySegment=='MesTransaction'">
 
+  <ion-card>
+
+  </ion-card>
 </div>
 
 
+
+
+
+    <!--<table>
+  <thead>
+  <tr>
+   <th scope="col">Date</th>
+     <th scope="col">Users</th>
+    <th scope="col">Montant</th>
+
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr *ngFor="let trans of transactions ">
+    <td>{{trans.dateDepot}} {{trans.dateRetrait}}</td>
+   <td>{{trans.userDepot}}{{trans.userRetrait}}</td>
+    <td>{{trans.montant}}</td>
+
+  </tr>
+  <ion-item *ngIf="transactions">
+    <ion-label ><strong>Total</strong></ion-label>
+    <ion-input readonly="true" >
+    </ion-input>
+  </ion-item>
+  </tbody>
+</table>-->
+
+
+
   <div *ngIf="mySegment=='TesTransaction'">
-    <p>mes</p>
+    <p>Toutes mes transactions</p>
   </div>
 </ion-content>
