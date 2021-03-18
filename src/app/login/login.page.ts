@@ -61,7 +61,9 @@ export class LoginPage implements OnInit {
 
    onLogin(){
     this.submitted = true;
-
+    if (this.loginForm.invalid){
+      return;
+    }
     this.loginService.login(this.f.username.value, this.f.password.value)
       .pipe(first()).subscribe(
         data => {
@@ -71,7 +73,6 @@ export class LoginPage implements OnInit {
             this.router.navigate(['/menu']);
 
           }
-
           console.log(this.loginService.getMyToken());
         });
    }

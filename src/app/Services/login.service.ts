@@ -36,6 +36,7 @@ export class LoginService {
            map(Users => {
             localStorage.setItem('currentUser', JSON.stringify(Users));
             this.currentUserSubject.next( Users as Users);
+            console.log(JSON.stringify(Users));
           }));
     }
 

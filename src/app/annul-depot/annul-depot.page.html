@@ -1,0 +1,132 @@
+
+<ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-icon size="large" id="home" color="secondary" name="home" [routerLink]="['/menu']"></ion-icon>
+      </ion-col>
+
+      <ion-col>
+        <img src="assets/images/Logo%20MONEY%20SA%201.png" alt="" id="img">
+      </ion-col>
+    </ion-row>
+    <p id="depot">Annuler Depot</p>
+  </ion-grid>
+</ion-header>
+
+
+<ion-card-content color="light">
+  <ion-label>Code Retrait</ion-label>
+  <ion-item>
+    <ion-input placeholder="213-365-456"
+               name="code"
+               type="text"
+               [(ngModel)]="code"
+               (focusout)="getCode()"></ion-input>
+  </ion-item>
+</ion-card-content>
+
+
+<ion-content *ngIf="recuperer">
+  <ion-card>
+    <ion-segment [(ngModel)]="mySegment" >
+      <ion-segment-button value="Beneficiaire">
+        <ion-label>Beneficiaire</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Emetteur">
+        <ion-label>Emetteur</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-card>
+
+  <form>
+
+    <div *ngIf="mySegment=='Beneficiaire'">
+      <ion-card color="light">
+
+        <ion-card>
+          <ion-label> Prénom & Nom</ion-label>
+          <ion-item>
+            <p>{{annul.clients.nomClient}}</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label> Téléphone </ion-label>
+          <ion-item>
+            <p>{{annul.clients.telephoneClient}}</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label> Montant à recevoir</ion-label>
+          <ion-item>
+            <p> {{annul.montant}} FCFA</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label> Date D'envoi</ion-label>
+          <ion-item>
+            <p>{{annul.dateDepot}}</p>
+          </ion-item>
+        </ion-card>
+
+      </ion-card>
+
+    </div>
+
+
+
+    <div *ngIf="mySegment=='Emetteur'">
+      <ion-card>
+        <ion-card>
+          <ion-label color="dark">Num CNI Emetteur</ion-label>
+          <ion-item>
+            <p >{{annul.clients.CNIClient}}</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label> Prénom & Nom</ion-label>
+          <ion-item>
+            <p>{{annul.clients.nomBeneficiaire}}</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label > Téléphone </ion-label>
+          <ion-item>
+            <p>{{annul.clients.telephoneBeneficiaire}}</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label> Montant à envoyé</ion-label>
+          <ion-item>
+            <p>{{annul.montant}} FCFA</p>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-label> Date D'envoi</ion-label>
+          <ion-item>
+            <p> {{annul.dateDepot}}</p>
+          </ion-item>
+        </ion-card>
+      </ion-card>
+    </div>
+
+    <div>
+      <ion-button color="secondary"
+                  expand="block"
+                  shape="round"
+                  type="submit"
+                  (click)="doAnnuler()">
+        Annuler
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
+
+

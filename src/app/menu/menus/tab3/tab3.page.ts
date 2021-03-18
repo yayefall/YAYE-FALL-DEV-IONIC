@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {RetraitService} from '../../../Services/retrait.service';
 import {Transactions} from '../../../Modeles/Transactions';
+import {LoginService} from '../../../Services/login.service';
+import {TransactionService} from '../../../Services/transaction.service';
 
 @Component({
   selector: 'app-tab3',
@@ -9,11 +10,17 @@ import {Transactions} from '../../../Modeles/Transactions';
 })
 export class Tab3Page implements OnInit {
   mySegment = 'MesTransaction';
-  transactions: Transactions[];
-  constructor( private  retraitService: RetraitService) { }
+  // tslint:disable-next-line:ban-types
+  transactions;
+  transe;
+  roles;
+  constructor( private  transactionService: TransactionService,
+               private loginService: LoginService) { }
 
   ngOnInit() {
-    return this.retraitService.getTransaction().subscribe(
+    this.roles = this.loginService.getMyToken().roles[0];
+
+    this.transactionService.getMyTransaction().subscribe(
       data => {
         this.transactions = data;
         console.log(data);
@@ -21,4 +28,7 @@ export class Tab3Page implements OnInit {
     );
   }
 
+  getTransaction(value: any) {
+
+  }
 }

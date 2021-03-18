@@ -12,10 +12,10 @@
 
 <ion-content color="light">
   <!--{{loginForm.value | json}}-->
-  <form [formGroup]="loginForm" >
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
     <ion-card>
     <ion-card-content class="ion-padding">
-      <ion-label color=""><strong>Telephone</strong></ion-label>
+      <ion-label color=""><strong>Username</strong></ion-label>
       <ion-item  color="light">
         <ion-input color="dark"
                    type="text"
@@ -41,7 +41,8 @@
                    placeholder="Saisir votre mot de passe"
                    name="password"
                    required
-                   formControlName="password">
+                   formControlName="password"
+                   [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
         </ion-input>
         <ion-icon size="large" color="secondary" name="eye"  ></ion-icon>
         <div *ngIf="submitted && f.password.errors">
@@ -64,8 +65,8 @@
       <div class="flex">
         <ion-button color="secondary"
                     expand="default"
-                    shape="round"
-        (click)="onLogin()">
+                    type="submit"
+                    shape="round">
           Se Connecter
         </ion-button>
       </div>

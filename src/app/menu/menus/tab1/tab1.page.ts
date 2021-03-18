@@ -49,4 +49,7 @@ roles;
 
   }
 
+  outLog(){
+    this.loginService.logout();
+  }
 }

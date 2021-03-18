@@ -64,6 +64,10 @@ const routes: Routes = [
     path: 'retrait',
     loadChildren: () => import('./retrait/retrait.module').then( m => m.RetraitPageModule)
   },
+  {
+    path: 'annul-depot',
+    loadChildren: () => import('./annul-depot/annul-depot.module').then( m => m.AnnulDepotPageModule)
+  },
 ];
 
 @NgModule({

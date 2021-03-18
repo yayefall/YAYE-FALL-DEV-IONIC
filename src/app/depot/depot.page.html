@@ -115,6 +115,7 @@
         </ion-item>
 
         <ion-label color="dark"> Telephone </ion-label>
+
         <ion-item>
           <ion-input
                      placeholder="78-245-63-20"
@@ -129,7 +130,9 @@
 <div>
   <ion-button  color="secondary"
                expand="block"
-               shape="round" (click)="onSubmit()">
+               type="submit"
+               shape="round"
+               [disabled]="depot.invalid">
     Suivant
   </ion-button>
 </div>

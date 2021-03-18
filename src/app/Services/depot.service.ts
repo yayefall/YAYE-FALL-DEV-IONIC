@@ -25,7 +25,7 @@ export class DepotService {
     {
       if (solde <= this.max_array[i]) {
 
-        this.frais =   this.frais_array[i];
+        this.frais = this.frais_array[i];
         this.total = Number (solde) + Number(this.frais);
         return this.frais;
       }
@@ -41,4 +41,7 @@ export class DepotService {
           body, { headers : this.headerJson});
     }
 
+    annulDepot(body: any){
+      return this.http.post (`${environment.apiUrl}/transactions/annuler`, body);
+    }
 }

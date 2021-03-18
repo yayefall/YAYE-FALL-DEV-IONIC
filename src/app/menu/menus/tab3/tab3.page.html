@@ -14,54 +14,171 @@
         <ion-segment-button value="MesTransaction">
           <ion-label>Mes Transaction</ion-label>
         </ion-segment-button>
-        <ion-segment-button value="TesTransaction">
+        <ion-segment-button value="TesTransaction" *ngIf="roles == 'ROLE_AdminAgence'">
           <ion-label>Toutes mes transactions</ion-label>
         </ion-segment-button>
       </ion-segment>
     </ion-card>
   </ion-grid>
 </ion-header>
+<!-- cest ici Termine le Headers-->
+
+
 
 <ion-content>
+
+
 <div *ngIf="mySegment=='MesTransaction'">
 
-  <ion-card>
+  <!-- cest ici commence les select  users et Dates-->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Type</ion-label>
+          <ion-select interface="popover"  #element (ionChange)="getTransaction(element.value)" >
+            <ion-select-option value="Depot">Depot</ion-select-option>
+            <ion-select-option value="Retrait">Retrait</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
 
-  </ion-card>
+      <ion-col>
+        <ion-item>
+          <ion-label>Date</ion-label>
+          <ion-select interface="popover">
+            <ion-select-option value="date">date</ion-select-option>
+            <ion-select-option value="dates">dates</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+
+  <!-- cest ici commence la table Mes Transactions-->
+  <ion-grid class="ion-text-center">
+
+    <ion-row class="header-row">
+
+      <ion-col><ion-text>Data</ion-text></ion-col>
+      <ion-col><ion-text>Montant</ion-text></ion-col>
+      <ion-col><ion-text>Frais</ion-text></ion-col>
+    </ion-row>
+
+
+
+    <div  *ngIf="depots == 'Depot';else Retrait">
+      <ion-row *ngFor="let commis of transactions ">
+        <ion-col><ion-text>{{commis.dateDepot}}</ion-text></ion-col>
+        <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
+        <ion-col><ion-text>{{commis.partAgentDepot}}</ion-text></ion-col>
+      </ion-row>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col><strong>Total</strong></ion-col>
+          <ion-col><strong>1000000 FCFA</strong></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ng-template #Retrait>
+      <ion-row *ngFor="let commis of transactions ">
+        <ion-col><ion-text>{{commis.dateRetrait}}</ion-text></ion-col>
+        <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
+        <ion-col><ion-text>{{commis.partAgentRetrait}}</ion-text></ion-col>
+      </ion-row>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col><strong>Total</strong></ion-col>
+          <ion-col><strong>10000 FCFA</strong></ion-col>
+        </ion-row>
+      </ion-grid>
+    </ng-template>
+
+  </ion-grid>
+
 </div>
 
 
+  <!-- cest ici commence la table Toutes Mes Transactions-->
+  <div *ngIf="mySegment=='TesTransaction' && roles == 'ROLE_AdminAgence'">
+
+    <!-- cest ici commence les select  users et Dates-->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Users</ion-label>
+            <ion-select interface="popover"  #element (ionChange)="getTransaction(element.value)" >
+              <ion-select-option value="Depot">userDepot</ion-select-option>
+              <ion-select-option value="Retrait">userRetrait</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-select interface="popover">
+              <ion-select-option value="date">date</ion-select-option>
+              <ion-select-option value="dates">dates</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid class="ion-text-center">
+
+      <ion-row class="header-row">
+
+        <ion-col><ion-text>Data</ion-text></ion-col>
+        <ion-col><ion-text>Users</ion-text></ion-col>
+        <ion-col><ion-text>Montant</ion-text></ion-col>
+        <ion-col><ion-text>Frais</ion-text></ion-col>
+      </ion-row>
 
 
+      <div  *ngIf="depots == 'Depot';else Retrait">
+        <ion-row *ngFor="let commis of transactions ">
+          <ion-col><ion-text>{{commis.dateDepot}}</ion-text></ion-col>
+          <ion-col><ion-text>{{commis.userDepot}}</ion-text></ion-col>
+          <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
+          <ion-col><ion-text>{{commis.partAgentDepot}}</ion-text></ion-col>
+        </ion-row>
 
-    <!--<table>
-  <thead>
-  <tr>
-   <th scope="col">Date</th>
-     <th scope="col">Users</th>
-    <th scope="col">Montant</th>
+        <ion-grid>
+          <ion-row>
+            <ion-col><strong>Total</strong></ion-col>
+            <ion-col><strong>1000000 FCFA</strong></ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <ng-template #Retrait>
+        <ion-row *ngFor="let commis of transactions ">
+          <ion-col><ion-text>{{commis.dateRetrait}}</ion-text></ion-col>
+          <ion-col><ion-text>{{commis.userRetrait}}</ion-text></ion-col>
+          <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
+          <ion-col><ion-text>{{commis.partAgentRetrait}}</ion-text></ion-col>
+        </ion-row>
 
-  </tr>
-  </thead>
+        <ion-grid>
+          <ion-row>
+            <ion-col><strong>Total</strong></ion-col>
+            <ion-col><strong>10000 FCFA</strong></ion-col>
+          </ion-row>
+        </ion-grid>
+      </ng-template>
 
-  <tbody>
-  <tr *ngFor="let trans of transactions ">
-    <td>{{trans.dateDepot}} {{trans.dateRetrait}}</td>
-   <td>{{trans.userDepot}}{{trans.userRetrait}}</td>
-    <td>{{trans.montant}}</td>
+    </ion-grid>
 
-  </tr>
-  <ion-item *ngIf="transactions">
-    <ion-label ><strong>Total</strong></ion-label>
-    <ion-input readonly="true" >
-    </ion-input>
-  </ion-item>
-  </tbody>
-</table>-->
-
-
-
-  <div *ngIf="mySegment=='TesTransaction'">
-    <p>Toutes mes transactions</p>
   </div>
+
 </ion-content>
+
+
+

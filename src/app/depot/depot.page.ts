@@ -3,6 +3,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {DepotService} from '../Services/depot.service';
 import {Client} from '../Modeles/Client';
 import {AlertController} from '@ionic/angular';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-depot',
@@ -20,9 +21,11 @@ mySegment = 'Emetteur';
 frais: number;
 total: number;
 client: Client;
+transactions;
   constructor(private formbuilder: FormBuilder,
               private  depotService: DepotService,
-              public alertController: AlertController) {}
+              public alertController: AlertController,
+              private route: Router) {}
 
   depot = this.formbuilder.group({
     CNIClient: ['', [Validators.required]],
@@ -64,8 +67,9 @@ client: Client;
       header: 'Transfert Reussi',
       cssClass: 'color',
       message: 'Vous avez envoyé à' + ' ' + this.depot.value.nomBeneficiaire +
-        ' une somme de' + ' ' + this.depot.value.montant + ' '
-        + 'Votre code de transaction est' +  this.depot.value.code,
+        ' une somme de' + ' ' + this.depot.value.montant + ' ' + 'depuis le' + ' ' + this.transactions.dateDepot +
+        '  <br> <br> <br>'
+        + 'Votre code de transaction est' + ' ' + this.transactions.code,
       buttons: [
         {
           text: 'Annuler',
@@ -150,8 +154,10 @@ client: Client;
             handler: () => {
               this.depotService.postDepot(infoClient).subscribe(
                 async (data: any) => {
+                  this.transactions = data;
                   console.log(data);
                   this.showAlerts();
+                  await this.route.navigate(['/tabs/tab1']);
                 });
             }
           }
