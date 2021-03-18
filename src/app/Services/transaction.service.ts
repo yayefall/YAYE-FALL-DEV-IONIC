@@ -17,6 +17,7 @@ export class TransactionService {
     return this.http.get<Transactions[]>(`${environment.apiUrl}/useragence/transactions?archivage=0`);
   }
 
+  // Mes Commissions
   getCommiRetrai(){
     return this.http.get(`${environment.apiUrl}/transactions/commissRetrait`);
   }
@@ -24,9 +25,23 @@ export class TransactionService {
   getCommiDepot(){
     return this.http.get(`${environment.apiUrl}/transactions/commissDepot`);
   }
-
-  getMyTransaction(){
-    return this.http.get(`${environment.apiUrl}/transactions/mesTransactions`);
+ // Mes Transactions
+  getMyTranD(){
+    return this.http.get(`${environment.apiUrl}/transactions/mesTransDepot`);
   }
+  getMyTranR(){
+    return this.http.get(`${environment.apiUrl}/transactions/mesTransRetrait`);
+  }
+
+  // Toutes les transactions
+  getToutTranR(){
+    return this.http.get(`${environment.apiUrl}/transactions/toutTransRetrait`);
+  }
+
+
+  getToutTranD(){
+    return this.http.get(`${environment.apiUrl}/transactions/toutTransDepot`);
+  }
+
 
 }

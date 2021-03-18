@@ -20,14 +20,14 @@
       <ion-col>
       <ion-item>
         <ion-label>Type</ion-label>
-        <ion-select interface="popover"  #element (ionChange)="getCommission(element.value)" [(ngModel)]="depots">
+        <ion-select interface="popover"  #element (ionChange)="getCommission(element.value)" value="Depot">
           <ion-select-option value="Depot">Depot</ion-select-option>
           <ion-select-option value="Retrait">Retrait</ion-select-option>
         </ion-select>
       </ion-item>
       </ion-col>
 
-    <ion-col>
+      <!--<ion-col>
       <ion-item>
         <ion-label>Date</ion-label>
         <ion-select interface="popover">
@@ -35,7 +35,7 @@
           <ion-select-option value="dates">dates</ion-select-option>
         </ion-select>
       </ion-item>
-    </ion-col>
+    </ion-col>-->
 
     </ion-row>
   </ion-grid>
@@ -63,7 +63,7 @@
 
 
 
-<div  *ngIf="depots == 'Depot';else Retrait">
+<div  *ngIf="depots ;else Retrait">
     <ion-row *ngFor="let commis of commisions ">
       <ion-col><ion-text>{{commis.dateDepot}}</ion-text></ion-col>
       <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
@@ -73,7 +73,7 @@
     <ion-grid>
       <ion-row>
         <ion-col><strong>Total</strong></ion-col>
-        <ion-col><strong>1000000 FCFA</strong></ion-col>
+        <ion-col><strong>{{calcul}} FCFA</strong></ion-col>
       </ion-row>
     </ion-grid>
 </div>
@@ -87,44 +87,11 @@
       <ion-grid>
         <ion-row>
           <ion-col><strong>Total</strong></ion-col>
-          <ion-col><strong>10000 FCFA</strong></ion-col>
+          <ion-col><strong>{{calcul}} FCFA</strong></ion-col>
         </ion-row>
       </ion-grid>
     </ng-template>
 
   </ion-grid>
 
-
-
-
-
-
-  <!--<div>
-    <ion-card>
-      <ion-grid>
-        <ion-row>
-          <ion-col><strong> Date Depot</strong></ion-col>
-          <ion-col><strong> Date Retrait</strong></ion-col>
-          <ion-col><strong> frais Depot</strong></ion-col>
-          <ion-col><strong> frais Retrait</strong></ion-col>
-        </ion-row>
-      </ion-grid>
-
-      <ion-grid *ngFor="let commis of commisions ">
-        <ion-row>
-          <ion-col>{{commis.dateDepot}}</ion-col>
-          <ion-col>{{commis.dateRetrait}}</ion-col>
-          <ion-col>{{commis.partAgentDepot}}</ion-col>
-          <ion-col>{{commis.partAgentRetrait}}</ion-col>
-        </ion-row>
-      </ion-grid>
-
-      <ion-grid>
-        <ion-row>
-          <ion-col><strong>Total</strong></ion-col>
-          <ion-col><strong>1000000 FCFA</strong></ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card>
-  </div>-->
 </ion-content>

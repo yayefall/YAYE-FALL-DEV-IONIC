@@ -36,22 +36,22 @@
       <ion-col>
         <ion-item>
           <ion-label>Type</ion-label>
-          <ion-select interface="popover"  #element (ionChange)="getTransaction(element.value)" >
+          <ion-select interface="popover" value="Depot" #element (ionChange)="getMesTransaction(element.value)" >
             <ion-select-option value="Depot">Depot</ion-select-option>
             <ion-select-option value="Retrait">Retrait</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-col>
 
-      <ion-col>
-        <ion-item>
-          <ion-label>Date</ion-label>
-          <ion-select interface="popover">
-            <ion-select-option value="date">date</ion-select-option>
-            <ion-select-option value="dates">dates</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-col>
+      <!--<ion-col>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-select interface="popover">
+        <ion-select-option value="date">date</ion-select-option>
+        <ion-select-option value="dates">dates</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-col>-->
 
     </ion-row>
   </ion-grid>
@@ -69,31 +69,31 @@
 
 
 
-    <div  *ngIf="depots == 'Depot';else Retrait">
-      <ion-row *ngFor="let commis of transactions ">
-        <ion-col><ion-text>{{commis.dateDepot}}</ion-text></ion-col>
-        <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
-        <ion-col><ion-text>{{commis.partAgentDepot}}</ion-text></ion-col>
+    <div  *ngIf="type ;else Retrait">
+      <ion-row *ngFor="let trans of transactions ">
+        <ion-col><ion-text>{{trans.dateDepot}}</ion-text></ion-col>
+        <ion-col><ion-text>{{trans.montant}}</ion-text></ion-col>
+        <ion-col><ion-text>{{trans.partAgentDepot}}</ion-text></ion-col>
       </ion-row>
 
       <ion-grid>
         <ion-row>
           <ion-col><strong>Total</strong></ion-col>
-          <ion-col><strong>1000000 FCFA</strong></ion-col>
+          <ion-col><strong>{{calcul}}  FCFA</strong></ion-col>
         </ion-row>
       </ion-grid>
     </div>
     <ng-template #Retrait>
-      <ion-row *ngFor="let commis of transactions ">
-        <ion-col><ion-text>{{commis.dateRetrait}}</ion-text></ion-col>
-        <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
-        <ion-col><ion-text>{{commis.partAgentRetrait}}</ion-text></ion-col>
+      <ion-row *ngFor="let trans of transactions ">
+        <ion-col><ion-text>{{trans.dateRetrait}}</ion-text></ion-col>
+        <ion-col><ion-text>{{trans.montant}}</ion-text></ion-col>
+        <ion-col><ion-text>{{trans.partAgentRetrait}}</ion-text></ion-col>
       </ion-row>
 
       <ion-grid>
         <ion-row>
           <ion-col><strong>Total</strong></ion-col>
-          <ion-col><strong>10000 FCFA</strong></ion-col>
+          <ion-col><strong>{{calcul}} FCFA</strong></ion-col>
         </ion-row>
       </ion-grid>
     </ng-template>
@@ -112,22 +112,22 @@
         <ion-col>
           <ion-item>
             <ion-label>Users</ion-label>
-            <ion-select interface="popover"  #element (ionChange)="getTransaction(element.value)" >
+            <ion-select interface="popover" value="Depot" #element (ionChange)="getTouTransaction(element.value)" >
               <ion-select-option value="Depot">userDepot</ion-select-option>
               <ion-select-option value="Retrait">userRetrait</ion-select-option>
             </ion-select>
           </ion-item>
         </ion-col>
 
-        <ion-col>
-          <ion-item>
-            <ion-label>Date</ion-label>
-            <ion-select interface="popover">
-              <ion-select-option value="date">date</ion-select-option>
-              <ion-select-option value="dates">dates</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
+        <!--<ion-col>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="date">date</ion-select-option>
+          <ion-select-option value="dates">dates</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>-->
 
       </ion-row>
     </ion-grid>
@@ -143,33 +143,33 @@
       </ion-row>
 
 
-      <div  *ngIf="depots == 'Depot';else Retrait">
-        <ion-row *ngFor="let commis of transactions ">
-          <ion-col><ion-text>{{commis.dateDepot}}</ion-text></ion-col>
-          <ion-col><ion-text>{{commis.userDepot}}</ion-text></ion-col>
-          <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
-          <ion-col><ion-text>{{commis.partAgentDepot}}</ion-text></ion-col>
+      <div  *ngIf="types ;else Retrait">
+        <ion-row *ngFor="let trans of transaction ">
+          <ion-col><ion-text>{{trans.dateDepot}}</ion-text></ion-col>
+          <ion-col><ion-text>{{trans.userDepot.prenom}} {{trans.userDepot.nom}}</ion-text></ion-col>
+          <ion-col><ion-text>{{trans.montant}}</ion-text></ion-col>
+          <ion-col><ion-text>{{trans.partAgentDepot}}</ion-text></ion-col>
         </ion-row>
 
         <ion-grid>
           <ion-row>
             <ion-col><strong>Total</strong></ion-col>
-            <ion-col><strong>1000000 FCFA</strong></ion-col>
+            <ion-col><strong>{{frais}} FCFA</strong></ion-col>
           </ion-row>
         </ion-grid>
       </div>
       <ng-template #Retrait>
-        <ion-row *ngFor="let commis of transactions ">
-          <ion-col><ion-text>{{commis.dateRetrait}}</ion-text></ion-col>
-          <ion-col><ion-text>{{commis.userRetrait}}</ion-text></ion-col>
-          <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
-          <ion-col><ion-text>{{commis.partAgentRetrait}}</ion-text></ion-col>
+        <ion-row *ngFor="let trans of transaction ">
+          <ion-col><ion-text>{{trans.dateRetrait}}</ion-text></ion-col>
+          <ion-col><ion-text>{{trans.userRetrait.prenom}} {{trans.userRetrait.nom}}</ion-text></ion-col>
+          <ion-col><ion-text>{{trans.montant}}</ion-text></ion-col>
+          <ion-col><ion-text>{{trans.partAgentRetrait}}</ion-text></ion-col>
         </ion-row>
 
         <ion-grid>
           <ion-row>
             <ion-col><strong>Total</strong></ion-col>
-            <ion-col><strong>10000 FCFA</strong></ion-col>
+            <ion-col><strong>{{frais}} FCFA</strong></ion-col>
           </ion-row>
         </ion-grid>
       </ng-template>
