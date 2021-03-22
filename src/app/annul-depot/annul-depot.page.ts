@@ -52,7 +52,7 @@ export class AnnulDepotPage implements OnInit {
 
   async annulToast() {
     const toast = await this.toastController.create({
-      message: 'LA TRANSACTION EST SUPPRIMÉE AVEC SUCCES',
+      message: 'LA TRANSACTION EST ANNULEE AVEC SUCCES',
       duration: 3000,
       position: 'middle',
       color: 'success'

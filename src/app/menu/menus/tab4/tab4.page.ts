@@ -20,7 +20,7 @@ export class Tab4Page implements OnInit {
     250000, 300000, 400000, 750000, 900000, 1000000, 1125000, 1400000, 2000000];
   // tslint:disable-next-line:variable-name
   frais_array = [425, 850, 1270, 1695, 2500, 3000, 4000, 5000, 6000,
-    7000, 8000, 9000, 1200, 15000, 22000, 25000, 27000, 30000, 30000];
+    7000, 8000, 9000, 12000, 15000, 22000, 25000, 27000, 30000, 30000];
   frais: number;
 
   constructor(private depotService: DepotService,

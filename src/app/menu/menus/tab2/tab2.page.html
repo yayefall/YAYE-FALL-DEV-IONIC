@@ -65,7 +65,7 @@
 
 <div  *ngIf="depots ;else Retrait">
     <ion-row *ngFor="let commis of commisions ">
-      <ion-col><ion-text>{{commis.dateDepot}}</ion-text></ion-col>
+      <ion-col><ion-text>{{commis.dateDepot | date: "dd.MM.Y"}}</ion-text></ion-col>
       <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
       <ion-col><ion-text>{{commis.partAgentDepot}}</ion-text></ion-col>
     </ion-row>
@@ -79,7 +79,7 @@
 </div>
     <ng-template #Retrait>
       <ion-row *ngFor="let commis of commisions ">
-        <ion-col><ion-text>{{commis.dateRetrait}}</ion-text></ion-col>
+        <ion-col><ion-text>{{commis.dateRetrait | date:"dd.MM.y"}}</ion-text></ion-col>
         <ion-col><ion-text>{{commis.montant}}</ion-text></ion-col>
         <ion-col><ion-text>{{commis.partAgentRetrait}}</ion-text></ion-col>
       </ion-row>

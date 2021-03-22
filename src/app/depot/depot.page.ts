@@ -11,6 +11,14 @@ import {Router} from '@angular/router';
   styleUrls: ['./depot.page.scss'],
 })
 export class DepotPage implements OnInit {
+  constructor(private formbuilder: FormBuilder,
+              private  depotService: DepotService,
+              public alertController: AlertController,
+              private route: Router) {}
+    get d(){
+
+        return this.depot.controls;
+    }
 mySegment = 'Emetteur';
   // tslint:disable-next-line:variable-name
   max_array = [5000, 10000, 15000, 20000, 50000, 60000, 75000, 120000, 150000, 200000,
@@ -22,10 +30,6 @@ frais: number;
 total: number;
 client: Client;
 transactions;
-  constructor(private formbuilder: FormBuilder,
-              private  depotService: DepotService,
-              public alertController: AlertController,
-              private route: Router) {}
 
   depot = this.formbuilder.group({
     CNIClient: ['', [Validators.required]],
@@ -36,13 +40,9 @@ transactions;
     montant: ['', [Validators.required]],
   });
 
-
   ngOnInit() {
-  }
-    get d(){
 
-        return this.depot.controls;
-    }
+  }
   getFrais(solde: number){
     // @ts-ignore
        for (let  i = 0; i < this.max_array.length; i++)
@@ -156,7 +156,7 @@ transactions;
                 async (data: any) => {
                   this.transactions = data;
                   console.log(data);
-                  this.showAlerts();
+                 // this.showAlerts();
                   await this.route.navigate(['/tabs/tab1']);
                 });
             }

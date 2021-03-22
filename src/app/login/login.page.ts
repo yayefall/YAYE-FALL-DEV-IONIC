@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {LoginService} from '../Services/login.service';
 import {first} from 'rxjs/operators';
 import * as $ from 'jquery';
+import {ToastController} from '@ionic/angular';
 
 // @ts-ignore
 @Component({
@@ -22,7 +23,8 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private loginService: LoginService)
+    private loginService: LoginService,
+    private toastController: ToastController )
   {
      this.currentUser = this.loginService.currentUserValue;
   }
@@ -55,6 +57,19 @@ export class LoginPage implements OnInit {
     });
   }
 
+
+  async nonAccesToast() {
+    const toast = await this.toastController.create({
+      message: 'VOUS N\'AVEZ PAS ACCES',
+      duration: 3000,
+      position: 'top',
+      color: 'success'
+    });
+    await toast.present();
+  }
+
+
+
   get f(): any {
     return this.loginForm.controls;
   }
@@ -72,6 +87,8 @@ export class LoginPage implements OnInit {
           if (decodedToken.roles[0] === 'ROLE_AdminAgence' || decodedToken.roles[0] === 'ROLE_UserAgence'){
             this.router.navigate(['/menu']);
 
+          }else{
+           this.nonAccesToast();
           }
           console.log(this.loginService.getMyToken());
         });

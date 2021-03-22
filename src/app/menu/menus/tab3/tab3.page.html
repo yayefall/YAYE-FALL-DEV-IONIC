@@ -71,7 +71,7 @@
 
     <div  *ngIf="type ;else Retrait">
       <ion-row *ngFor="let trans of transactions ">
-        <ion-col><ion-text>{{trans.dateDepot}}</ion-text></ion-col>
+        <ion-col><ion-text>{{trans.dateDepot | date: 'dd-MM-y'}}</ion-text></ion-col>
         <ion-col><ion-text>{{trans.montant}}</ion-text></ion-col>
         <ion-col><ion-text>{{trans.partAgentDepot}}</ion-text></ion-col>
       </ion-row>
@@ -85,7 +85,7 @@
     </div>
     <ng-template #Retrait>
       <ion-row *ngFor="let trans of transactions ">
-        <ion-col><ion-text>{{trans.dateRetrait}}</ion-text></ion-col>
+        <ion-col><ion-text>{{trans.dateRetrait | date:'dd-MM-y'}}</ion-text></ion-col>
         <ion-col><ion-text>{{trans.montant}}</ion-text></ion-col>
         <ion-col><ion-text>{{trans.partAgentRetrait}}</ion-text></ion-col>
       </ion-row>
@@ -145,7 +145,7 @@
 
       <div  *ngIf="types ;else Retrait">
         <ion-row *ngFor="let trans of transaction ">
-          <ion-col><ion-text>{{trans.dateDepot}}</ion-text></ion-col>
+          <ion-col><ion-text>{{trans.dateDepot | date:"dd-MM-y"}}</ion-text></ion-col>
           <ion-col><ion-text>{{trans.userDepot.prenom}} {{trans.userDepot.nom}}</ion-text></ion-col>
           <ion-col><ion-text>{{trans.montant}}</ion-text></ion-col>
           <ion-col><ion-text>{{trans.partAgentDepot}}</ion-text></ion-col>
@@ -160,7 +160,7 @@
       </div>
       <ng-template #Retrait>
         <ion-row *ngFor="let trans of transaction ">
-          <ion-col><ion-text>{{trans.dateRetrait}}</ion-text></ion-col>
+          <ion-col><ion-text>{{trans.dateRetrait | date:'dd-MM-y'}}</ion-text></ion-col>
           <ion-col><ion-text>{{trans.userRetrait.prenom}} {{trans.userRetrait.nom}}</ion-text></ion-col>
           <ion-col><ion-text>{{trans.montant}}</ion-text></ion-col>
           <ion-col><ion-text>{{trans.partAgentRetrait}}</ion-text></ion-col>
