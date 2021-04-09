@@ -1,7 +1,9 @@
 #page{
   width: 5%;
 }
-
+ion-card-content{
+  background-color: white;
+}
 #depot{
   text-align: center;
   border-bottom: #24C6DC solid 3px;
@@ -11,6 +13,7 @@
 ion-header{
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
+  background: #ffffff;
   ion-row{
     ion-col{
       display: flex;

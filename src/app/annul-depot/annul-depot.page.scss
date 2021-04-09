@@ -8,9 +8,13 @@
   margin:  auto;
   width: 40%;
 }
+ion-card-content{
+  background-color: white;
+}
 ion-header{
   border-bottom-left-radius: 5%;
   border-bottom-right-radius: 5%;
+  background-color: white;
   ion-row{
     ion-col{
       display: flex;
